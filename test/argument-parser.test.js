@@ -176,6 +176,18 @@ describe('ArgumentParser', () => {
             ], /unexpected value: hello/i);
         });
 
+        it('should report error if integer value invalid', () => {
+            expectParseFailed('-i hello', [
+                { flag: 'i', type: INTEGER },
+            ], /invalid value for flag -i: hello/i);
+        });
+
+        it('should report error if integer list value invalid', () => {
+            expectParseFailed('-i 3,hello,1', [
+                { flag: 'i', type: INTEGERS },
+            ], /invalid value for flag -i: hello/i);
+        });
+
     });
 
     describe('with lists', () => {

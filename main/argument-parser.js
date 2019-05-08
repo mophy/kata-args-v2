@@ -31,12 +31,12 @@ export default class ArgumentParser {
         let flag = this.tokens.nextFlag();
         let arg = this.args.get(flag);
         let schema = this.schemas.get(flag);
-        arg.value = this.getValue(schema, flag);
+        arg.value = this.getValue(schema.type, flag);
     }
 
-    getValue(schema, flag) {
-        let value = schema.needValue() ? this.tokens.nextValue(flag) : undefined;
-        return schema.convert(value);
+    getValue(type, flag) {
+        let value = type.needValue() ? this.tokens.nextValue(flag) : undefined;
+        return type.convert(value, flag);
     }
 
 }
