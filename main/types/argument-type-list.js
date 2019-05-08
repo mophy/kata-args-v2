@@ -12,8 +12,7 @@ export default class ArgumentTypeList extends ArgumentType {
     }
 
     static convertItem(flag) {
-        return value => this.itemClass()
-            .convert(value, flag);
+        return value => this.itemClass().convert(value, flag);
     }
 
 }
